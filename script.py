@@ -67,7 +67,7 @@ def main():
     parser.add_argument('--exit_code', metavar="?", type=int, help="The exitcode to display [0/1]")
     parser.add_argument('--setup', dest="setup", help="Used to setup the script", action="store_true")
 
-
+    SETTINGS_FILE = path.expanduser("~/.hue-settings")
 
     args = parser.parse_args()
 
@@ -80,11 +80,11 @@ def main():
 
     settings = {}
     settings_changed = False
-    if path.exists("settings.pkl"):
-        settings = pickle.load(open("settings.pkl", "rb"))
+    if path.exists(SETTINGS_FILE):
+        settings = pickle.load(open(SETTINGS_FILE, "rb"))
     elif not args.setup:
         print("No settingsfile located, setup need. Run with --setup")
-        exit
+        exit(1)
 
     if not "ip" in settings:
         # Step 1. Find the IP of the HUE bridge
@@ -113,7 +113,7 @@ def main():
 
     if settings_changed:
         # Save settings
-        with open("settings.pkl", "wb") as f:
+        with open(SETTINGS_FILE, "wb") as f:
             pickle.dump(settings, f)    
 
     # Do noting more if we are setting up
