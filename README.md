@@ -13,7 +13,7 @@ Do not even ask how i came up with this.
 
     __hue_prompt() {
             local EXIT=$?
-            python3 /path/to/repo/hue-exitcode/script.py --exit_code $EXIT
+            (python3 /path/to/repo/hue-exitcode/script.py --exit_code $EXIT &)
     }
     ```
 
