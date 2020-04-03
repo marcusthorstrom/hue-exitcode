@@ -1,6 +1,8 @@
 # Hue Terminal exit-code
 Do not even ask how i came up with this.
 
+![](ezgif.com-optimize.gif)
+
 ## Usage
 1. Install the requirements:
     * Python3
